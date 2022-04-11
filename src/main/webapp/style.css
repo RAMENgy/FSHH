@@ -1,0 +1,48 @@
+@charset "UTF-8";
+h1 {
+	text-align: center;
+	font-size: 80px;
+	background-color: #ffb973;
+	padding: 15px;
+  	color: white;
+  	border-radius: 50pc;
+}
+
+div {
+	margin: 100px;
+	text-align: center;
+}
+
+#name {
+	font-size: 90px;
+	width: 800px;
+	margin-bottom: 100px;
+} 
+
+#btn {
+	background-color: #ffb973;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 80px;
+  border-radius: 50pc;
+  margin-bottom: 100px;
+}
+
+.hide {
+	-ms-user-select: none; 
+ 	-moz-user-select: -moz-none;
+  	-khtml-user-select: none;
+  	-webkit-user-select: none;
+  	user-select: none;
+  	background-color: #ffb973;
+  	font-size: 80px;
+  	padding: 10px;
+  	color: white;
+  	border-radius: 50pc;
+}
+
+#mode {
+	display: none;
+}
