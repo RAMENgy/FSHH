@@ -6,11 +6,12 @@ h1 {
 	padding: 15px;
   	color: white;
   	border-radius: 50pc;
-  	margin: 20px;
+  	margin: 20px 200px;
 }
 
 body{ 
 	-ms-overflow-style: none;
+	background-color: #FFF8E7;
 } 
 ::-webkit-scrollbar { 
 	display: none; 
@@ -26,14 +27,19 @@ div {
 	width: 700px;
 	margin-bottom: 100px;
 	border-radius: 50pc;
-	border:1px solid #d7d7d7;
+	border:0px solid #FFF8E7;
 	text-align: center;
+	
 }
 
 input::placeholder {
   color: #d7d7d7;
   font-style: italic;
   text-align: center;
+}
+
+input:focus {
+	outline:none;
 }
 
 #btn {
