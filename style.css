@@ -6,6 +6,14 @@ h1 {
 	padding: 15px;
   	color: white;
   	border-radius: 50pc;
+  	margin: 20px;
+}
+
+body{ 
+	-ms-overflow-style: none;
+} 
+::-webkit-scrollbar { 
+	display: none; 
 }
 
 div {
@@ -14,10 +22,19 @@ div {
 }
 
 #name {
-	font-size: 90px;
-	width: 800px;
+	font-size: 80px;
+	width: 700px;
 	margin-bottom: 100px;
-}  
+	border-radius: 50pc;
+	border:1px solid #d7d7d7;
+	text-align: center;
+}
+
+input::placeholder {
+  color: #d7d7d7;
+  font-style: italic;
+  text-align: center;
+}
 
 #btn {
 	background-color: #ffb973;
@@ -25,7 +42,7 @@ div {
   color: white;
   padding: 5px 20px;
   text-align: center;
-  font-size: 80px;
+  font-size: 75px;
   border-radius: 50pc;
   margin-bottom: 100px;
 }
@@ -37,8 +54,8 @@ div {
   	-webkit-user-select: none;
   	user-select: none;
   	background-color: #ffb973;
-  	font-size: 80px;
-  	padding: 10px;
+  	font-size: 75px;
+  	padding: 5px 15px;
   	color: white;
   	border-radius: 50pc;
 }
