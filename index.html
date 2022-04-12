@@ -173,20 +173,21 @@ function f1() {
 	var aaa=a1+a2+a3;
 	var bbb=b1+b2+b3;
 	var ccc=c1+c2+c3;
-// 	alert(aaa+bbb+ccc)
-	if((aaa+bbb+ccc)%4==1){
+	var abc=parseInt(aaa)+parseInt(bbb)+parseInt(ccc);
+// 	alert(abc);
+	if(abc%4==1){
 		alert('꽃!')
 		location.href='flower.html';
 	}
-	else if((aaa+bbb+ccc)%4==2) {
+	else if(abc%4==2) {
 		alert('별!')
 		location.href='star.html';
 	}
-	else if((aaa+bbb+ccc)%4==3) {
+	else if(abc%4==3) {
 		alert('천!')
 		location.href='heaven.html';
 	}
-	else if((aaa+bbb+ccc)%4==0) {
+	else if(abc%4==0) {
 		alert('지!')
 		location.href='hell.html';
 	}
