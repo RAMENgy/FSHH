@@ -17,6 +17,15 @@ body{
 	display: none; 
 }
 
+#read {
+	font-family: sans-serif;
+	font-size: 50px;
+	color: #FFF8E7;
+	background-color: #ffb973;
+	border-radius: 50pc;
+	padding: 5px 10px;
+}
+
 div {
 	margin: 100px;
 	text-align: center;
@@ -44,13 +53,13 @@ input:focus {
 
 #btn {
 	background-color: #ffb973;
-  border: none;
-  color: white;
-  padding: 5px 20px;
-  text-align: center;
-  font-size: 75px;
-  border-radius: 50pc;
-  margin-bottom: 100px;
+	border: none;
+	color: white;
+	padding: 5px 20px;
+	text-align: center;
+	font-size: 75px;
+	border-radius: 50pc;
+	margin-bottom: 100px;
 }
 
 .hide {

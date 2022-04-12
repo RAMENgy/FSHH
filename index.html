@@ -5,28 +5,205 @@
 <title>꽃 별 천 지</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-function f1() {
-// 	alert('기능작동');
-	if(document.getElementById("name").value=="이"){
-		alert('이 입니다.');
-	} else {
-		alert('이 아닙니다');
+var a1,a2,a3;
+var b1,b2,b3;
+var c1,c2,c3;
+function js_han_split(char){ //한글을 자름
+	 var char_st = 44032 ;//'가'의 유니코드 넘버(10진수)
+	 var char_ed = 55203 ;//'힝'의 유니코드 넘버(10진수)
+	 //초성구분 : 588단위로 잘림
+	 //가까나다따라마바빠사싸아자짜차카타파하 :초성 19개
+	 //가개갸걔거게겨계고과괘괴교구궈궤귀규그긔기 : 중성 21개
+	 //가각갂갃간갅갆갇갈갉갊갋갌갍갎갏감갑값갓갔강갖갗갘같갚갛 : 종성 28개
+	 var arr_1st=new Array('ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ');//초성 19개
+	 var arr_2nd=new Array('ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ');//중성 21개
+	 var arr_3th=new Array('','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ');//종성 28개
+
+	 //======================================================
+	 if(char.length>2){char=char.charAt(0);}
+	 var uninum = escape(char);
+	 if(uninum.length<4) return false;//한글이 아니다
+	 uninum = parseInt(uninum.replace(/\%u/,''),16);
+	 if(uninum < char_st || uninum > char_ed) return false;//한글이 아니다
+	 var uninum2 = uninum-char_st;
+	 var arr_1st_v = Math.floor(uninum2/588);
+	 uninum2 = uninum2%588;
+	 var arr_2nd_v = (Math.floor(uninum2/28));
+	 uninum2 = (uninum2%28);
+	 var arr_3th_v = uninum2;
+	// alert(arr_1st_v); alert(arr_2nd_v); alert(arr_3th_v);
+	 var return_arr=new Array(arr_1st[arr_1st_v],arr_2nd[arr_2nd_v],arr_3th[arr_3th_v]);
+	// alert(return_arr);
+	 return return_arr;
 	}
+function f1() {
+	
+	if(document.getElementById("name").value.length != 3){
+		alert("3글자 이름을 입력 해주세요!");
+		document.getElementById("name").focus();
+		return false;
+	}
+	
+	// ==========================================================
+	// 첫글자
+	arr=js_han_split(document.getElementById("name").value.charAt(0));
+	a1=arr[0];
+	if(a1=='') a1=0;
+	else if (a1=='ㅇ') a1=1;
+	else if(a1== 'ㄱ' | a1== 'ㄴ' | a1== 'ㅅ') a1=2;
+	else if(a1== 'ㅁ' | a1== 'ㅂ' | a1== 'ㅊ' | a1== 'ㅌ' | a1== 'ㅍ' | a1== 'ㄲ' | a1== 'ㅆ') a1=3;
+	else if(a1== 'ㄹ') a1=5;
+	else if(a1== 'ㄸ' | a1== 'ㅉ') a1=6;
+	else if(a1== 'ㅃ') a1=8;
+// 	alert(a1);
+	// 이름 첫글자 초성 획수
+	
+	a2=arr[1];
+	if(a2=='ㅡ' | a2=='ㅣ') a2=1;
+	else if(a2=='ㅏ' | a2== 'ㅓ' | a2== 'ㅗ' | a2== 'ㅜ' | a2== 'ㅢ') a2=2;
+	else if(a2=='ㅑ' | a2== 'ㅕ' | a2== 'ㅛ' | a2== 'ㅠ' | a2== 'ㅐ' | a2== 'ㅔ' | a2== 'ㅚ' | a2== 'ㅟ') a2=3;
+	else if(a2=='ㅒ' | a2== 'ㅖ' | a2== 'ㅘ' | a2== 'ㅝ') a2=4;
+	else if(a2=='ㅙ' | a2== 'ㅞ') a2=5;
+// 	alert(a2);
+	// 이름 첫글자 중성 획수
+	
+	a3=arr[2];
+	if(a3=='') a3=0;
+	else if (a3=='ㅇ') a3=1;
+	else if(a3== 'ㄱ' | a3== 'ㄴ' | a3== 'ㅅ') a3=2;
+	else if(a3== 'ㅁ' | a3== 'ㅂ' | a3== 'ㅊ' | a3== 'ㅌ' | a3== 'ㅍ' | a3== 'ㄲ' | a3== 'ㅆ') a3=3;
+	else if(a3== 'ㄹ') a3=5;
+	else if(a3== 'ㄸ' | a3== 'ㅉ') a3=6;
+	else if(a3== 'ㅃ') a3=8;
+	
+	else if(a3=='ㄳ') a3=4;
+	else if(a3=='ㄵ' | a3=='ㄶ') a3=5;
+	else if(a3=='ㅄ') a3=6;
+	else if(a3=='ㄺ' | a3== 'ㄽ') a3=7;
+	else if(a3=='ㅀ') a3=8;
+	else if(a3=='ㄻ' | a3== 'ㄼ' | a3== 'ㄾ' | a3== 'ㄿ') a3=9;
+// 	alert(a3);
+	// 이름 첫글자 종성 획수
+	
+	// ==========================================================
+	// 두번째 글자
+	arr=js_han_split(document.getElementById("name").value.charAt(1));
+	b1=arr[0];
+	if(b1=='') b1==0;
+	else if(b1=='ㅇ') b1=1;
+	else if(b1== 'ㄱ' | b1== 'ㄴ' | b1== 'ㅅ') b1=2;
+	else if(b1== 'ㅁ' | b1== 'ㅂ' | b1== 'ㅊ' | b1== 'ㅌ' | b1== 'ㅍ' | b1== 'ㄲ' | b1== 'ㅆ') b1=3;
+	else if(b1== 'ㄹ') b1=5;
+	else if(b1== 'ㄸ' | a1== 'ㅉ') b1=6;
+	else if(b1== 'ㅃ') b1=8;
+// 	alert(b1);
+	// 이름 두번째글자 초성 획수
+	
+	b2=arr[1];
+	if(b2=='ㅡ' | b2=='ㅣ') b2=1;
+	else if(b2=='ㅏ' | b2== 'ㅓ' | b2== 'ㅗ' | b2== 'ㅜ' | b2== 'ㅢ') b2=2;
+	else if(b2=='ㅑ' | b2== 'ㅕ' | b2== 'ㅛ' | b2== 'ㅠ' | b2== 'ㅐ' | b2== 'ㅔ' | b2== 'ㅚ' | b2== 'ㅟ') b2=3;
+	else if(b2=='ㅒ' | b2== 'ㅖ' | b2== 'ㅘ' | b2== 'ㅝ') b2=4;
+	else if(b2=='ㅙ' | b2== 'ㅞ') b2=5;
+// 	alert(b2);
+	// 이름 두번째글자 중성 획수
+	
+	b3=arr[2];
+	if(b3=='ㄳ') b3=4;
+	else if(b3=='ㅇ') b3=1;
+	else if(b3== 'ㄱ' | b3== 'ㄴ' | b3== 'ㅅ') b3=2;
+	else if(b3== 'ㅁ' | b3== 'ㅂ' | b3== 'ㅊ' | b3== 'ㅌ' | b3== 'ㅍ' | b3== 'ㄲ' | b3== 'ㅆ') b3=3;
+	else if(b3== 'ㄹ') b3=5;
+	else if(b3== 'ㄸ' | a1== 'ㅉ') b3=6;
+	else if(b3== 'ㅃ') b3=8;
+	
+	else if(b3=='ㄵ' | b3=='ㄶ') b3=5;
+	else if(b3=='ㅄ') b3=6;
+	else if(b3=='ㄺ' | b3== 'ㄽ') b3=7;
+	else if(b3=='ㅀ') b3=8;
+	else if(b3=='ㄻ' | b3== 'ㄼ' | b3== 'ㄾ' | b3== 'ㄿ') b3=9;
+// 	alert(b3);
+	// 이름 두번째글자 종성 획수
+	
+	// ==========================================================
+	// 세번째 글자
+	arr=js_han_split(document.getElementById("name").value.charAt(2));
+	c1=arr[0];
+	if(c1=='ㅇ') c1=1;
+	else if(c1== 'ㄱ' | c1== 'ㄴ' | c1== 'ㅅ') c1=2;
+	else if(c1== 'ㅁ' | c1== 'ㅂ' | c1== 'ㅊ' | c1== 'ㅌ' | c1== 'ㅍ' | c1== 'ㄲ' | c1== 'ㅆ') c1=3;
+	else if(c1== 'ㄹ') c1=5;
+	else if(c1== 'ㄸ' | c1== 'ㅉ') c1=6;
+	else if(c1== 'ㅃ') c1=8;
+// 	alert(c1);
+	// 이름 세번째글자 초성 획수
+	
+	c2=arr[1];
+	if(c2=='ㅡ' | c2=='ㅣ') c2=1;
+	else if(c2=='ㅏ' | c2== 'ㅓ' | c2== 'ㅗ' | c2== 'ㅜ' | c2== 'ㅢ') c2=2;
+	else if(c2=='ㅑ' | c2== 'ㅕ' | c2== 'ㅛ' | c2== 'ㅠ' | c2== 'ㅐ' | c2== 'ㅔ' | c2== 'ㅚ' | c2== 'ㅟ') c2=3;
+	else if(c2=='ㅒ' | c2== 'ㅖ' | c2== 'ㅘ' | c2== 'ㅝ') c2=4;
+	else if(c2=='ㅙ' | c2== 'ㅞ') c2=5;
+// 	alert(c2);
+	// 이름 세번째글자 중성 획수
+	
+	c3=arr[2];
+	if(c3=='') c3=0;
+	else if(c3== 'ㅇ') c3=1;
+	else if(c3== 'ㄱ' | c3== 'ㄴ' | c3== 'ㅅ') c3=2;
+	else if(c3== 'ㅁ' | c3== 'ㅂ' | c3== 'ㅊ' | c3== 'ㅌ' | c3== 'ㅍ' | c3== 'ㄲ' | c3== 'ㅆ') c3=3;
+	else if(c3== 'ㄹ') c3=5;
+	else if(c3== 'ㄸ' | c3== 'ㅉ') c3=6;
+	else if(c3== 'ㅃ') c3=8;
+	
+	else if(c3=='ㄳ') c3=4;
+	else if(c3=='ㄵ' | c3=='ㄶ') c3=5;
+	else if(c3=='ㅄ') c3=6;
+	else if(c3=='ㄺ' | c3== 'ㄽ') c3=7;
+	else if(c3=='ㅀ') c3=8;
+	else if(c3=='ㄻ' | c3== 'ㄼ' | c3== 'ㄾ' | c3== 'ㄿ') c3=9;
+// 	alert(c3);
+	// 이름 세번째글자 종성 획수
+	var aaa=a1+a2+a3;
+	var bbb=b1+b2+b3;
+	var ccc=c1+c2+c3;
+	if((aaa+bbb+ccc)%4==1){
+		alert('꽃!')
+		location.href='flower.html';
+	}
+	else if((aaa+bbb+ccc)%4==2) {
+		alert('별!')
+		location.href='flower.html';
+	}
+	else if((aaa+bbb+ccc)%4==3) {
+		alert('천!')
+		location.href='heaven.html';
+	}
+	else if((aaa+bbb+ccc)%4==0) {
+		alert('지!')
+		location.href='hell.html';
+	}
+	
 } 
 function f2(){
 	if(document.getElementById("mode").checked==true){
 	document.body.style.backgroundColor='#2c2c2c';
 	}
 	else if(document.getElementById("mode").checked==false){
-	document.body.style.backgroundColor='white';
+	document.body.style.backgroundColor='#FFF8E7';
 	} 
 }
+
 </script>
 </head>
 <input type="checkbox" id="mode" onclick="f2()">
 <body id="bd">
 <h1>꽃 별 천 지 이름점보기</h1>
 <div>
+<span id="read">
+꽃별천지로 사후세계 점보기!
+</span>
+<br><br>
 <input type="text" id="name" name="name" placeholder="이름을 입력하세요"><br><br><br><br>
 <button type="button" id="btn" onclick="f1()">결과보기</button><br><br><br><br>
 <label for="mode" class="hide">다크모드 설정/해제</label>
