@@ -176,19 +176,19 @@ function f1() {
 	var abc=parseInt(aaa)+parseInt(bbb)+parseInt(ccc);
 // 	alert(abc);
 	if(abc%4==1){
-		alert('꽃!')
+		alert(document.getElementById("name").value+'님의 이름획수는 '+abc+'획 꽃별천지...꽃!')
 		location.href='flower.html';
 	}
 	else if(abc%4==2) {
-		alert('별!')
+		alert(document.getElementById("name").value+'님의 이름획수는 '+abc+'획 꽃별천지...별!')
 		location.href='star.html';
 	}
 	else if(abc%4==3) {
-		alert('천!')
+		alert(document.getElementById("name").value+'님의 이름획수는 '+abc+'획 꽃별천지...천!')
 		location.href='heaven.html';
 	}
 	else if(abc%4==0) {
-		alert('지!')
+		alert(document.getElementById("name").value+'님의 이름획수는 '+abc+'획 꽃별천지...지!')
 		location.href='hell.html';
 	}
 	
